@@ -42,113 +42,105 @@ describe('HomePage', () => {
     vi.useRealTimers();
   });
 
+  // Comprueba que el componente se crea y que su contenido principal aparece.
   it('crea la página y muestra el formulario principal', () => {
-    // TODO - Comprueba que el componente se crea.
-
-    // TODO - Observamos el elemento con selector "ion-card-title", solo tenemos uno en este caso
-
+    expect(component).toBeTruthy();
+    // TODO - Obsrevamos el elemento con selector "ion-card-title", solo tenemos uno en este caso
+    
   });
 
   // Estas pruebas comprueban reglas que no necesitan consultar servicios.
   describe('reglas síncronas', () => {
     // TODO - Una persona menor de 18 años no puede acceder.
     it('rechaza 17 años', () => {
-
+      
     });
 
     // TODO - La edad mínima permitida es exactamente 18 años.
     it('acepta exactamente 18 años', () => {
-
+      
     });
 
     // TODO - También se aceptan personas que superan la edad mínima.
     it('acepta una edad superior a 18 años', () => {
-
+      
     });
 
-    // TODO - Comprueba que el año de nacimiento se transforma en la edad actual.
-    it('calcula la edad a partir del año de nacimiento', () => {
-
-    });
-
-    // Si faltan campos obligatorios, se muestra un error y no se consulta el servicio porque la solicitud se detiene antes.
+    // TODO - Si faltan campos obligatorios, se muestra un error y no se consulta el servicio porque la solicitud se detiene antes.
     it('no solicita acceso cuando faltan datos obligatorios', async () => {
-      /* TODO
-       * Llamar a solicitarAcceso
-       * Controlar estado
-       * Controlar mensaje
-       * Comprobar si se puede llamar validarEntrada
+      // Llamar a solicitarAcceso
+  
+      /* Controlar los valores de estado y mensjae
+       * Comprobar que validarEntrada se puede llamar
        */
 
     });
 
-    // Una persona menor de edad se rechaza antes de validar su código.
+    // TODO - Una persona menor de edad se rechaza antes de validar su código.
     it('rechaza una persona menor antes de consultar la entrada', async () => {
-      /* TODO
-       * Añadir nombre, anyoNacimiento y codigoEntrada
-       * Llamar a solicitarAcceso
-       * Controlar estado
-       * Controlar mensaje
-       * Comprobar si se puede llamar validarEntrada
-       */
+      // Añadir valores necesarios del componente
 
+      // Llamar a solicitarAcceso
+  
+      /* Controlar los valores de estado y mensjae
+       * Comprobar que validarEntrada se puede llamar
+       */
     });
   });
 
-  // Comprueba la comunicación entre HomePage y EntradaService.
+  // TODO - Comprueba la comunicación entre HomePage y EntradaService.
   describe('colaboración con EntradaService', () => {
-    // DONE - Prepara datos válidos reutilizables en las pruebas del servicio.
-    // Este método auxiliar se podrá utilizar en este describe
+    // Prepara datos válidos reutilizables en las pruebas del servicio.
     const prepararFormulario = (): void => {
       component.nombre = 'Alex García';
       component.anyoNacimiento = new Date().getFullYear() - 25;
       component.codigoEntrada = 'FEST-2026';
     };
 
-    // Simula una promesa correcta y verifica el estado de carga y el resultado.
+    // TODO - Simula una promesa correcta y verifica el estado de carga y el resultado.
     it('indica carga y procesa una promesa resuelta', async () => {
-      // TODO - Creamos una variable de tipo ResultadoEntrada
+      // Definir los valores de ResultadoEntrada para una entrada autorizada
       
-      // TODO - validarEntrada si la promesa se resuelve correctamente
+      // Resolver el mock con ResultadoEntrada
       
-      /* TODO
-       * Necesitamos los datos de nombre, anyoNacimiento y codigoEntrada
-       * Llamamos a solicitarAcceso
-       * El estado será "cargando"
-       * Esperamos hasta completar la solicitud
-       * Comprobar que validarEntrada se ha llamado 1 vez
-       * Comprobar que validarEntrada se llama con el parámetro "FEST-2026"
-       * Comprobar que estado sea "exito"
-       * Comprobar que mensaje sea "Entrada autorizada"
+      // Definir los valores del component
+
+      /* Llamar a solicitarAcceso
+       * Comprobar el estado cargando
+       * Esperar a que termine la solicitud
+       */
+      
+
+      /* Comprobar que validarEntrada se llame una vez
+       * Comprobar pasándole el valor FEST-2026 a validarEntrada
+       * Controlar los valores que deben tener estado y mensaje
        */
 
     });
 
-    // Una respuesta recibida correctamente también puede indicar que el
+    // TODO - Una respuesta recibida correctamente también puede indicar que el
     // código no está autorizado; en ese caso se muestra el rechazo.
     it('muestra el rechazo de una entrada válida para la persona', async () => {
-
-      // TODO - Crear los valores falsos de validarEntrada, añadir valores a autorizada y mensaje
+      // Resolver el mock con valores de rechazo
       
-      /* TODO
-       * Necesitamos los datos de nombre, anyoNacimiento y codigoEntrada
-       * Llamamos a solicitarAcceso
-       * Comprobar que estado sea "error"
-       * Comprobar que mensaje sea "Código rechazado"
-       */
+      // Definir los valores del component
+
+      // Llamar a solicitarAcceso
+
+      //Controlar los valores que deben tener estado y mensaje
 
     });
 
     // Convierte un fallo de la promesa en un mensaje de error que el usuario
     // puede ver, en lugar de dejar la interfaz en estado de carga.
     it('convierte un rechazo de la promesa en un error visible', async () => {
-      // TODO - controlar la respeusta de rechazo de la promesa ("red caída")
-      /* TODO
-       * Necesitamos los datos de nombre, anyoNacimiento y codigoEntrada
-       * Llamamos a solicitarAcceso
-       * Comprobar que estado sea "error"
-       * Comprobar que mensaje sea "No se ha podido consultar"
-       */
+      // Comprobar el valor del mock si hay un Error
+      
+      // Definir los valores del component
+
+      // Llamar a solicitarAcceso
+
+      //Controlar los valores que deben tener estado y mensaje
 
     });
   });
@@ -156,84 +148,171 @@ describe('HomePage', () => {
   // Comprueba el resultado que se muestra en la plantilla y el comportamiento
   // del mensaje temporal que desaparece mediante un temporizador.
   describe('DOM y timers', () => {
-    // Después de una respuesta autorizada, el resultado debe aparecer en el
-    // DOM con la clase CSS que representa un estado correcto.
+    
+    /* TODO - Después de una respuesta autorizada, el resultado debe aparecer en el
+     * DOM con la clase CSS que representa un estado correcto.
+     */
     it('pinta el resultado en el DOM después de una respuesta correcta', async () => {
-      // TODO - Añadir valores falsos a validarEntrada cuando el resultado se válido
+      // Resolver el mock con los valores cuando hay acceso concedido
       
-      /* TODO
-       * Necesitamos los datos de nombre, anyoNacimiento y codigoEntrada
-       * Llamamos a solicitarAcceso
-       * Habrá que detectar los cambios del fixture
-       * Controlar el elemento con class="result"
-       * Comprobar que textContent sea "Acceso concedido"
-       * Comprobar que classList contiene "success" y sea true
+      // Definir los valores del component
+
+      // Llamar a solicitarAcceso
+
+      // Detectar los cambios del fixture
+
+      //Observamos el selector con class="result"
+
+      // Comprobar los valores para textContent y classList
+
+    });
+
+    // TODO - Comprueba que la plantilla muestra los campos, textos y ayuda necesarios
+    // para que el usuario pueda completar y enviar el formulario.
+    it('muestra los campos y textos principales del formulario', () => {
+      // Crear una variable "html" de tipo HTMLElement
+      
+      /* Comprobar que el ion-card-title contiene el texto "Valida tu entrada"
+       * textContent debe contener "Nombre"
+       * textContent debe contener "Año de nacimiento"
+       * textContent debe contener "Código de entrada"
+       */
+      
+      /* Comprobar el textContent del ion-button sea "Solicitar acceso" 
+       * Comprobar que el elemento con id="codigo-entrada-ayuda" contenga el texto "FEST-2026"
        */
 
     });
 
-    // Los temporizadores simulados permiten avanzar el tiempo manualmente y
-    // comprobar que el aviso permanece 4 segundos y después se limpia.
-    it('borra el aviso cuando avanza el timer controlado', async () => {
-      // TODO - Añadir un Timer falso
-            
-      // TODO - Añadir valores falsos a validarEntrada cuando autorizada sea true y el mensaje "Temporal"
+    // TODO - Verifica que el formulario refleja visualmente que la solicitud está en
+    // curso, deshabilitando el botón y mostrando el spinner de carga.
+    it('muestra el estado de carga mientras valida la entrada', async () => {
+      /* DONE - En la llamada asíncrona necesitamos observar dos momentos diferentes
+       *     1- Mientras se está consultando la entrada
+       *     2- Cuando la consulta termina
+       * Con esto creamos una promesa que queda pendiente.
+       */
+      let resolver!: (resultado: ResultadoEntrada) => void;
+      validarEntrada.mockReturnValue(
+        new Promise<ResultadoEntrada>((resolve) => {
+          resolver = resolve;
+        }),
+      );
+
+      // Definir los valores del component
+
+      // Llamar a solicitarAcceso
+
+      // Detectar los cambios del fixture
+
+      // Guardar en una variable el primer ion-button como ---> as HTMLElement & { disabled: boolean }
       
-      /* TODO
-       * Necesitamos los datos de nombre, anyoNacimiento y codigoEntrada
-       * Llamamos a solicitarAcceso
-       * Avanzamos el tiempo hasta 3999ms
-       * Comprobar que el mensaje sea "Temporal"
-       * Avanzamos el tiempo 1ms para que sea 4000ms
-       * Comprobar que el estado sea "inicial"
-       * Comprobar que el mensaje sea ""
+      // guardar en una variable el ion-spinner
+      
+      /* Comprobar el estado cargando
+       * Comprobar que boton.disabled es true
+       * Comprobar que el spinner no sea null
+       * Comprobar que el textContent contenga "Consultando"
+       */
+      
+      // Modificar los valores de resolver para que autorizada sea true y el mensaje "Acceso concedido"
+
+      // Esperar la solicitud (variable que recoge lo que devuelve solicitarAcceso)
+      
+    });
+
+    // TODO - Comprueba que una entrada rechazada se muestra en el DOM con el mensaje
+    // recibido y las clases y atributos HTML correspondientes al error.
+    it('pinta el resultado con la clase de error', async () => {
+      // Resolver el mock de validarEntrada siendo autorizada false y el mensaje "Código rechazado"
+      
+      // Definir los valores del component
+
+      // Llamar a solicitarAcceso
+
+      // Detectar los cambios del fixture
+
+      // Definir en una variable el valor del selector con class result as HTMLElement
+      
+      /* Comprobar textContent 
+       * Comprobar que classList sí contiene un class error
+       * Comprobar que el atributo aria-live sea polite
        */
 
+    });
+
+    // TODO - Comprueba que la plantilla muestra un mensaje de error cuando faltan
+    // datos obligatorios antes de consultar el servicio de entradas.
+    it('muestra el error de formulario en el HTML', async () => {
+      // Llamar a solicitarAcceso
+
+      // Detectar los cambios del fixture
+
+      // Definir en una variable el valor del selector con class result as HTMLElement
+
+      /* Comprobar textContent 
+       * Comprobar que classList sí contiene un class error
+       */
+    });
+
+    // TODO- Los temporizadores simulados permiten avanzar el tiempo manualmente y
+    // comprobar que el aviso permanece 4 segundos y después se limpia.
+    it('borra el aviso cuando avanza el timer controlado', async () => {
+      // Hacer uso de un timer falso
+      
+      // Resolver el mock para autorizada true y mensaje "Temporal"
+      
+      // Definir los valores del component
+
+      /* Esperar la llamada a solicitarAcceso
+       * Avanzar el tiempo hasta 3999
+       * Comprobar que el mensaje sea Temporal
+       */
+      
+      /* Avanzar 1ms
+       * Comprobar que estado es inicial
+       * Comprobar que mensaje sea ""
+       */
+      
     });
   });
 
-  // Comprueba que Angular permite reemplazar EdadService por un mock mediante
+  // TODO - Comprueba que Angular permite reemplazar EdadService por un mock mediante
   // inyección de dependencias, algo útil para aislar la página en una prueba.
   it('permite sustituir EdadService mediante el inyector', async () => {
-    /* TODO
-     * Creamos un mock de EdadService con los métodos_
-     * -> calcularEdad que devolverá un valor siempre 42
-     * -> esMayorEdad que devolverá siempre true
-     * -> esAñoDeNacimientoValido que devolverá siempre true.
+    /* Este mock devuelve valores controlados para comprobar qué datos recibe la página sin utilizar 
+     * la implementación real del servicio.
+     * Definir una variable para el servicio edadService y forzar los valores devueltos por cada método
      */
+    
 
-    /* TODO
-     * Creamos un mock de para validarEntrada con las variables 
-     * -> autorizada que será true
-     * -> mensaje que será "Mock autorizado"
-     */
+
+    // Creamos una función simulada para sustituir validarEntrada. Definir autorizada y mensaje
+    
 
     // Se reinicia el módulo anterior para configurar esta prueba con otro proveedor de EdadService.
-    /* TODO
-     * Añadir un provider para EdadService
-     * Añadir otro para EntradaService
-     */
+    // TODO - Definir los providers
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       imports: [HomePage],
       providers: [],
-    }); 
+    });
 
-  
-    // Se crea una segunda instancia usando los servicios simulados.
-    const mockFixture = TestBed.createComponent(HomePage);
-    const mockComponent = mockFixture.componentInstance;
-
-    // TODO - asignar valores a nombre y codigoEntrada
-    
-    // Al solicitar el acceso, la página debe utilizar las funciones del mock
-    // y completar el flujo como si la persona fuera mayor de edad.
-    /* TODO
-     * Llamar a solicitarAcceso
-     * Comprobar que calcularEdad se puede llamar
-     * Comprobar que esMayorDeEdad se puede llamar con el parámetro 42
-     * Comprobar que estado sea "exito"
+    /* Se crea una segunda instancia de HomePage usando los servicios simulados.
+     * Definir mockFixture mediante TestBed y crear componente HomePage
+     * Definir mockComponent siendo este una nueva instancia de HomePage
+     * Definir los valores de mockComponent.nombre y mockComponent.codigoEntrada
      */
     
+
+    /* Al solicitar el acceso, la página debe utilizar las funciones del mock y completar el flujo como si la persona fuera mayor de edad.
+     * Llamar a solicitarAcceso con la nueva instancia
+     */
+
+    /* Comprobar que calcularEdad se puede llamar
+     * Comprobar que esMayorEdad se puede llamar con un valor (mismo valor definido en edadServiceMock)
+     * Comprobar que estado tenga el valor exito
+     */
+
   });
 });
