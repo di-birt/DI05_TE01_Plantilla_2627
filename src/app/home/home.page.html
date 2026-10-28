@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Festival Pass</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <main class="page-shell">
+    <section class="intro">
+      <p class="eyebrow">Tarea evaluativa · Pruebas unitarias</p>
+      <h1>Control de acceso al festival.</h1>
+      <p class="lead">
+        Una pequeña aplicación para practicar reglas de negocio, inyección de
+        dependencias, promesas, timers y pruebas del DOM con Vitest.
+      </p>
+    </section>
+
+    <section class="demo-grid" aria-label="Formulario de control de acceso">
+      <ion-card class="work-card">
+        <ion-card-header>
+          <p class="card-kicker">01 · Solicitud de acceso</p>
+          <ion-card-title>Valida tu entrada</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input
+              aria-label="Nombre"
+              [(ngModel)]="nombre"
+              placeholder="Ej. Alex García"
+            ></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="stacked">Año de nacimiento</ion-label>
+            <ion-input
+              aria-label="Año de nacimiento"
+              type="number"
+              [(ngModel)]="anyoNacimiento"
+            ></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="stacked">Código de entrada</ion-label>
+            <ion-input
+              aria-label="Código de entrada"
+              aria-describedby="codigo-entrada-ayuda"
+              [(ngModel)]="codigoEntrada"
+              placeholder="Ej. FEST-2026"
+            ></ion-input>
+            <ion-note id="codigo-entrada-ayuda">
+              Entradas válidas: <strong>FEST-2026</strong> y <strong>VIP-2026</strong>
+            </ion-note>
+          </ion-item>
+          <ion-button
+            expand="block"
+            [disabled]="estado === 'cargando'"
+            (click)="solicitarAcceso()"
+          >
+            @if (estado === 'cargando') {
+              <ion-spinner name="crescent" aria-label="Consultando"></ion-spinner>
+              Consultando...
+            } @else {
+              Solicitar acceso
+            }
+          </ion-button>
+          @if (mensaje) {
+            <p class="result" [class.success]="estado === 'exito'" [class.error]="estado === 'error'" aria-live="polite">
+              {{ mensaje }}
+            </p>
+          }
+        </ion-card-content>
+      </ion-card>
+
+      <div class="concept-stack">
+        <article class="concept rule-concept">
+          <span class="concept-number">REGLA</span>
+          <div>
+            <h2>Mayoría de edad</h2>
+            <p>
+              Se calcula la edad y se comprueba el límite de 18 años antes de
+              consultar la entrada.
+            </p>
+            <ion-note>EdadService · inyección de dependencias</ion-note>
+          </div>
+        </article>
+        <article class="concept async-concept">
+          <span class="concept-number">ASYNC</span>
+          <div>
+            <h2>Entrada remota</h2>
+            <p>
+              La validación devuelve una promesa. El test puede resolverla o
+              rechazarla con un mock sin depender de una red real.
+            </p>
+            <ion-note>EntradaService · mockResolvedValue</ion-note>
+          </div>
+        </article>
+        <article class="concept timer-concept">
+          <span class="concept-number">TIMER</span>
+          <div>
+            <h2>Aviso temporal</h2>
+            <p>
+              El resultado desaparece después de cuatro segundos. Los timers
+              falsos permiten probarlo sin esperar en tiempo real.
+            </p>
+            <ion-note>vi.useFakeTimers · advanceTimersByTime</ion-note>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      Ejecuta <code>npm test</code> para revisar la solución y
+      <code>npm run test:ui</code> para explorar Vitest UI.
+    </p>
+  </main>
+</ion-content>
