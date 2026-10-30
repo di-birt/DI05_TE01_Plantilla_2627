@@ -277,18 +277,15 @@ describe('HomePage', () => {
     });
   });
 
-  // TODO - Comprueba que Angular permite reemplazar EdadService por un mock mediante
+  // TODO - Comprueba que Angular permite reemplazar EntradaService por un mock mediante
   // inyección de dependencias, algo útil para aislar la página en una prueba.
   it('permite sustituir EdadService mediante el inyector', async () => {
-    /* Este mock devuelve valores controlados para comprobar qué datos recibe la página sin utilizar 
-     * la implementación real del servicio.
-     * Definir una variable para el servicio edadService y forzar los valores devueltos por cada método
+    /* Este mock de edadSErvice devuelve valores controlados para comprobar qué datos recibe la página sin utilizar la implementación real del servicio.
+     * Simula las llamadas a los métodos y sus respuestas
      */
     
-
-
-    // Creamos una función simulada para sustituir validarEntrada. Definir autorizada y mensaje
-    
+    // Crear un mock de entradaService permite que el flujo termine sin llamar al servicio real: simula que el código está autorizado.
+  
 
     // Se reinicia el módulo anterior para configurar esta prueba con otro proveedor de EdadService.
     // TODO - Definir los providers
